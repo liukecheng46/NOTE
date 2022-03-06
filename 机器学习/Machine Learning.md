@@ -1,4 +1,4 @@
-# Machine Learning Note
+# MachineLearning Note
 
 生成模型generative model：Model how the data is generated using probability distributions。适合少量数据
 
@@ -16,19 +16,19 @@ MLE is not alwasys has a closed form solution.
 
 Maximum Likelihood Estimation: maximizes the likelihood of the observed data.
 
-![Untitled](Machine%20Le%206bb85/Untitled.png)
+![Untitled](MachineLearning/Untitled.png)
 
 **离散分布**：
 
 1）二项概率分布（伯努利分布）：两种可能性每次相互独立，且每次概率相同
 
-![Untitled](Machine%20Le%206bb85/Untitled%201.png)
+![Untitled](MachineLearning/Untitled%201.png)
 
 多项式分布是伯努利分布的扩展，二项变成N项
 
 2）泊松分布：根据平均期望次数 求得各个次数的概率，也要求相互独立且每次概率相同
 
-![Untitled](Machine%20Le%206bb85/Untitled%202.png)
+![Untitled](MachineLearning/Untitled%202.png)
 
 **连续分布：**
 
@@ -36,13 +36,13 @@ Maximum Likelihood Estimation: maximizes the likelihood of the observed data.
 
 均值和标准差
 
-![Untitled](Machine%20Le%206bb85/Untitled%203.png)
+![Untitled](MachineLearning/Untitled%203.png)
 
 Bayesian Decision Rule: by assusming the distribution and using MLE，we can ge p(x|y), p(y) is easy to observe, so we can then get p(y|x) by bayes rule, 最大的 p(y|x) 的y即为预测类
 
 朴素贝叶斯的朴素是指假设多个特征相互独立，这样就可以拓展到多个x：
 
-![Untitled](Machine%20Le%206bb85/Untitled%204.png)
+![Untitled](MachineLearning/Untitled%204.png)
 
 多元高斯分布贝叶斯（Multivariate Gaussian）
 
@@ -55,13 +55,13 @@ Bayesian Decision Rule: by assusming the distribution and using MLE，we can ge 
 
                        IDF：所有文档/包含该词的文档。都包含时为0，包含该词文档越少，IDF越大
 
-![Untitled](Machine%20Le%206bb85/Untitled%205.png)
+![Untitled](MachineLearning/Untitled%205.png)
 
 3）word2vec (调库)
 
 拉普拉斯平滑：如果一个词在某个文档没有出现，那计算概率时该文档出现的几率就会是0，但这样是不合理的，等同于过拟合很严重。所以需要加1来防止过拟合。下图中的2是因为二项分布
 
-![Untitled](Machine%20Le%206bb85/Untitled%206.png)
+![Untitled](MachineLearning/Untitled%206.png)
 
 Discriminative model判别模型：learn p(y|x) directly
 
@@ -71,27 +71,27 @@ Discriminative model判别模型：learn p(y|x) directly
 
 逻辑回归：sigmoid函数映射到0到1之间
 
-![Untitled](Machine%20Le%206bb85/Untitled%207.png)
+![Untitled](MachineLearning/Untitled%207.png)
 
 用MLE和data去调整参数w
 
 逻辑回归推导：
 
-![Untitled](Machine%20Le%206bb85/Untitled%208.png)
+![Untitled](MachineLearning/Untitled%208.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%209.png)
+![Untitled](MachineLearning/Untitled%209.png)
 
 逻辑回归的正则化：给w加一个先验概率分布
 
-![Untitled](Machine%20Le%206bb85/Untitled%2010.png)
+![Untitled](MachineLearning/Untitled%2010.png)
 
 假设这个分布是高斯分布：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2011.png)
+![Untitled](MachineLearning/Untitled%2011.png)
 
 得出：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2012.png)
+![Untitled](MachineLearning/Untitled%2012.png)
 
 最后用梯度下降求optimization
 
@@ -105,7 +105,7 @@ Discriminative model判别模型：learn p(y|x) directly
 
 3）使用softmax函数
 
-![Untitled](Machine%20Le%206bb85/Untitled%2013.png)
+![Untitled](MachineLearning/Untitled%2013.png)
 
 模型损失函数的比较和选取：[https://zhuanlan.zhihu.com/p/35709485](https://zhuanlan.zhihu.com/p/35709485)
 
@@ -121,39 +121,39 @@ Discriminative model判别模型：learn p(y|x) directly
 
 为什么 maxmize the margin：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2014.png)
+![Untitled](MachineLearning/Untitled%2014.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2015.png)
+![Untitled](MachineLearning/Untitled%2015.png)
 
 因为margin distance和w的长度无关，只和方向有关，因此可以对上式进行normalization,将分子归一化为1 来方便计算：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2016.png)
+![Untitled](MachineLearning/Untitled%2016.png)
 
 goal：maxmize the margin
 
-![Untitled](Machine%20Le%206bb85/Untitled%2017.png)
+![Untitled](MachineLearning/Untitled%2017.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2018.png)
+![Untitled](MachineLearning/Untitled%2018.png)
 
 所以最终：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2019.png)
+![Untitled](MachineLearning/Untitled%2019.png)
 
 用f(x)的正负来进行预测
 
-![Untitled](Machine%20Le%206bb85/Untitled%2020.png)
+![Untitled](MachineLearning/Untitled%2020.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2021.png)
+![Untitled](MachineLearning/Untitled%2021.png)
 
 处理非线性数据：允许某些点在margin中
 
-![Untitled](Machine%20Le%206bb85/Untitled%2022.png)
+![Untitled](MachineLearning/Untitled%2022.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2023.png)
+![Untitled](MachineLearning/Untitled%2023.png)
 
 svm的hinge损失函数：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2024.png)
+![Untitled](MachineLearning/Untitled%2024.png)
 
 核函数：
 
@@ -165,7 +165,7 @@ The dual and primal problems are related through the Lagrange multipliers. if it
 
 and SVM problem can be rewritten to a dual peoblem. 而重写后的式子只用求两个高维向量的内积，因此与其映射到高维并计算高维向量的积，我们只用找到一种方法可以快速映射/计算两个高维向量的内积：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2025.png)
+![Untitled](MachineLearning/Untitled%2025.png)
 
 kernel trick：Replacing the inner product with a kernel function in the optimization problem
 
@@ -173,13 +173,13 @@ customized kernel: can use any kernel function, as long as it is positive defini
 
 多项式、RBF(similiar to Gaussian)..
 
-![Untitled](Machine%20Le%206bb85/Untitled%2026.png)
+![Untitled](MachineLearning/Untitled%2026.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2027.png)
+![Untitled](MachineLearning/Untitled%2027.png)
 
 集成算法：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2028.png)
+![Untitled](MachineLearning/Untitled%2028.png)
 
 Boosting can do feature selection：每一个分类器focus on 一个feature
 
@@ -187,19 +187,19 @@ Boosting is sensitive to outlier
 
 Adaboost：train weak classifiers sequentially，focus on data that is misclassified.
 
-![Untitled](Machine%20Le%206bb85/Untitled%2029.png)
+![Untitled](MachineLearning/Untitled%2029.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2030.png)
+![Untitled](MachineLearning/Untitled%2030.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2031.png)
+![Untitled](MachineLearning/Untitled%2031.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2032.png)
+![Untitled](MachineLearning/Untitled%2032.png)
 
 gradient boosting ：in each iteration, the weak learner fits the gradient of the loss
 
 random forest: can also do feature selection,fast.sensitive to outliers
 
-![Untitled](Machine%20Le%206bb85/Untitled%2033.png)
+![Untitled](MachineLearning/Untitled%2033.png)
 
 some feature dimensions with largerranges do not dominate the optimization process by：
 
@@ -215,41 +215,41 @@ Class imbalance: mistakes on some classes are more critical. reweight class to f
 
 分类总结：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2034.png)
+![Untitled](MachineLearning/Untitled%2034.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2035.png)
+![Untitled](MachineLearning/Untitled%2035.png)
 
 回归模型：
 
 线性回归：y=wx+b(w0), use Ordinary Least Squares(OLS)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2036.png)
+![Untitled](MachineLearning/Untitled%2036.png)
 
 lasso回归和ridge回归；线性回归基础上分别增加L1和L2正则化。L1 正则化会比 L2 正则化让线性回归的权重更加稀疏，使得线性回归中很多权重为 0，即 L1 正则化（lasso）可以进行 feature selection，而 L2 正则化（ridge）不行（lasso 更容易使得权重变为 0，而 ridge 更容易使得权重接近 0）。
 
-![Untitled](Machine%20Le%206bb85/Untitled%2037.png)
+![Untitled](MachineLearning/Untitled%2037.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2038.png)
+![Untitled](MachineLearning/Untitled%2038.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2039.png)
+![Untitled](MachineLearning/Untitled%2039.png)
 
 L2 focuses more on large weights. L1 treats all weights equally.
 
 OMP（正交匹配追踪法） 加入L0正则化并使用贪心算法进行优化 ,只考虑非0 entry数量超过K的w
 
-![Untitled](Machine%20Le%206bb85/Untitled%2040.png)
+![Untitled](MachineLearning/Untitled%2040.png)
 
 去除数据异常值很重要（outliers）
 
 随机抽样一致算法（RANSAC）：把数据分为内点群（inliers）和外点群（outliers）,训练时忽略outlier。the Threshold typically set as the median absolute deviation of y
 
-![Untitled](Machine%20Le%206bb85/Untitled%2041.png)
+![Untitled](MachineLearning/Untitled%2041.png)
 
 **非线性回归**：
 
 多项式回归: 交叉验证选择degree
 
-![Untitled](Machine%20Le%206bb85/Untitled%2042.png)
+![Untitled](MachineLearning/Untitled%2042.png)
 
 核函数岭回归：加kernel-trick，很慢，比SVR慢
 
@@ -259,7 +259,7 @@ OMP（正交匹配追踪法） 加入L0正则化并使用贪心算法进行优�
 
 GPR with a linear kernel is equivalent to Bayesian linear regression
 
-![Untitled](Machine%20Le%206bb85/Untitled%2043.png)
+![Untitled](MachineLearning/Untitled%2043.png)
 
 GPR可以用复合核函数：kernels can be summed, multiplied, and exponentiated to make new kernels
 
@@ -267,25 +267,25 @@ the uncertainty (stddev of the prediction) increases when less data is available
 
 maximizing the marginal likelihood:
 
-![Untitled](Machine%20Le%206bb85/Untitled%2044.png)
+![Untitled](MachineLearning/Untitled%2044.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2045.png)
+![Untitled](MachineLearning/Untitled%2045.png)
 
 支持向量回归(加入核函数变为非线性): tube width is important
 
-![Untitled](Machine%20Le%206bb85/Untitled%2046.png)
+![Untitled](MachineLearning/Untitled%2046.png)
 
 随机森林回归
 
 xgboost回归
 
-![Untitled](Machine%20Le%206bb85/Untitled%2047.png)
+![Untitled](MachineLearning/Untitled%2047.png)
 
 回归前的归一化标准化很关键. 
 
 当y的范围特别大或特别小时，会影响RMSE，最好用log(y) 映射一下
 
-![Untitled](Machine%20Le%206bb85/Untitled%2048.png)
+![Untitled](MachineLearning/Untitled%2048.png)
 
 无监督学习：
 
@@ -297,21 +297,21 @@ Dimensions in the low-dim data may have semantic meaning.
 
 why do DR:
 
-![Untitled](Machine%20Le%206bb85/Untitled%2049.png)
+![Untitled](MachineLearning/Untitled%2049.png)
 
 线性降维：简单的从高维映射到低维平面，minimize the reconstruction error 
 
-![Untitled](Machine%20Le%206bb85/Untitled%2050.png)
+![Untitled](MachineLearning/Untitled%2050.png)
 
 pca主成分分析：无监督，降维后特征互相独立，本质是对数据的协方差矩阵求特征值及特征向量取前k个   to  find basis vectors that are orthogonal.
 
-![Untitled](Machine%20Le%206bb85/Untitled%2051.png)
+![Untitled](MachineLearning/Untitled%2051.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2052.png)
+![Untitled](MachineLearning/Untitled%2052.png)
 
 Denoising去除噪声：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2053.png)
+![Untitled](MachineLearning/Untitled%2053.png)
 
 Radndom Projection：维数高计算很慢，从高斯分布随机生成初始基向量，fatser, 选的好可以保留相对信息
 
@@ -325,15 +325,15 @@ find a lower-dim space so as to minimize the class overlap，最小化同类方�
 
 data from each class is modeled as a Gaussian.
 
-![Untitled](Machine%20Le%206bb85/Untitled%2054.png)
+![Untitled](MachineLearning/Untitled%2054.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2055.png)
+![Untitled](MachineLearning/Untitled%2055.png)
 
 文本降维：
 
 LSA 潜在语义分析：本质是对词-文本矩阵进行SVD奇异分解(按主题划分) 高维太慢
 
-![Untitled](Machine%20Le%206bb85/Untitled%2056.png)
+![Untitled](MachineLearning/Untitled%2056.png)
 
 Advantage: Finds relations between terms (synonymy and polysemy). distances/similarities are now comparing topics rather than words, so can do higher-level semantic representation, 有closed-form solution
 
@@ -345,13 +345,13 @@ NMF非负矩阵分解:  比LSA快很多，且没有负数，但是没有closed-f
 
 PCA和LDA（FLD）是基于协方差矩阵，所以归一化和标准化会导致协方差矩阵的变化，从而降维结果不同
 
-![Untitled](Machine%20Le%206bb85/Untitled%2057.png)
+![Untitled](MachineLearning/Untitled%2057.png)
 
 非线性降维(try to preserve inherent structure of data, calculate low-dim coefficients using non-linear projections (kernel).)：
 
 KPCA：add kernel
 
-![Untitled](Machine%20Le%206bb85/Untitled%2058.png)
+![Untitled](MachineLearning/Untitled%2058.png)
 
 Using RBF kernel, KPCA can split the data into clusters.
 
@@ -359,9 +359,9 @@ Using RBF kernel, KPCA can split the data into clusters.
 
 **After training, manifold embedding methods cannot transform a novel (new) point. need to re-train the whole thing.**
 
-![Untitled](Machine%20Le%206bb85/Untitled%2059.png)
+![Untitled](MachineLearning/Untitled%2059.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2060.png)
+![Untitled](MachineLearning/Untitled%2060.png)
 
 LLE(Locally-linear Embedding）：sensitive to the number of neighbors for defining the local region
 
@@ -375,15 +375,15 @@ MDS use Euclidean dis, but two points may be far away along the manifold (geodes
 
 Isomap:Find embedding that preserves geodesic distances between points
 
-![Untitled](Machine%20Le%206bb85/Untitled%2061.png)
+![Untitled](MachineLearning/Untitled%2061.png)
 
 SE: Preserve the neighborhood structure
 
 t-SNE: Preserve pairwise similarities,Tends to group together similar items
 
-![Untitled](Machine%20Le%206bb85/Untitled%2062.png)
+![Untitled](MachineLearning/Untitled%2062.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2063.png)
+![Untitled](MachineLearning/Untitled%2063.png)
 
 聚类算法：
 
@@ -391,11 +391,11 @@ kmeans：minimize the total sum-squared difference between points and their cent
 
 初始cluster center的位置非常重要，所以Try several times using different initializations. Pick the answer with lowest objective score.
 
-![Untitled](Machine%20Le%206bb85/Untitled%2064.png)
+![Untitled](MachineLearning/Untitled%2064.png)
 
 **Bag-of-X Representation**：用kmeans来构造新的特征向量，n个cluster代表n维的新特征
 
-![Untitled](Machine%20Le%206bb85/Untitled%2065.png)
+![Untitled](MachineLearning/Untitled%2065.png)
 
 kmeans认为簇都是圆形的，对椭圆或者其他形状的簇效果不好（skewed or elliptical）
 
@@ -403,11 +403,11 @@ kmeans认为簇都是圆形的，对椭圆或者其他形状的簇效果不好�
 
 A multivariate Gaussian can model a cluster with an elliptical shape
 
-![Untitled](Machine%20Le%206bb85/Untitled%2066.png)
+![Untitled](MachineLearning/Untitled%2066.png)
 
 GMM是很多个多元高斯模型的组合：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2067.png)
+![Untitled](MachineLearning/Untitled%2067.png)
 
 Difficult to optimize because the "sum" is inside the "log". 
 
@@ -415,11 +415,11 @@ Difficult to optimize because the "sum" is inside the "log".
 
 But We can use **Expectation Maximization (EM) Algorithm** finding the MLE solution when there are hidden (unseen) variables
 
-![Untitled](Machine%20Le%206bb85/Untitled%2068.png)
+![Untitled](MachineLearning/Untitled%2068.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2069.png)
+![Untitled](MachineLearning/Untitled%2069.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2070.png)
+![Untitled](MachineLearning/Untitled%2070.png)
 
 协方差矩阵：O（d^2） 维度大的时候计算量很大
 
@@ -431,17 +431,17 @@ Dirichlet Process (DPGMM)：可以自动选择K
 
 use a "Dirichlet Process" to model K as a random variable.
 
-![Untitled](Machine%20Le%206bb85/Untitled%2071.png)
+![Untitled](MachineLearning/Untitled%2071.png)
 
 concentration parameter a，larger a may yield more clusters, bu tis is not that important
 
 Non-parametric estimation: We want to estimate a probability density without assuming a parametric model (e.g., Gaussian),we can put a small Gaussian at each data point, and sum it up. this is called **kernel density estimator(KDE),** the kernel here is small Gaussian
 
-![Untitled](Machine%20Le%206bb85/Untitled%2072.png)
+![Untitled](MachineLearning/Untitled%2072.png)
 
 then we get **mean-shift**: iteratively shift towards the largest concentration of points. start from an initial point   (e.g., one of the data points).
 
-![Untitled](Machine%20Le%206bb85/Untitled%2073.png)
+![Untitled](MachineLearning/Untitled%2073.png)
 
 Run the mean-shift algorithm for many initial points .
 
@@ -451,7 +451,7 @@ need to remove the duplicate centers.
 
 data points that converge to the same center belong to the same cluster.
 
-![Untitled](Machine%20Le%206bb85/Untitled%2074.png)
+![Untitled](MachineLearning/Untitled%2074.png)
 
 对于other shape的聚类：
 
@@ -459,35 +459,35 @@ data points that converge to the same center belong to the same cluster.
 
 cut the graph into clusters such that weights of cut edges is small compared to the total edge weight within each cluster.find "blocks" of high affinity in the affinity matrix.
 
-![Untitled](Machine%20Le%206bb85/Untitled%2075.png)
+![Untitled](MachineLearning/Untitled%2075.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2076.png)
+![Untitled](MachineLearning/Untitled%2076.png)
 
 聚类也是需要归一化标准化的（基于欧几里得距离）
 
-![Untitled](Machine%20Le%206bb85/Untitled%2077.png)
+![Untitled](MachineLearning/Untitled%2077.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2078.png)
+![Untitled](MachineLearning/Untitled%2078.png)
 
 Perceptron：无法处理非线性数据
 
 Different initializations can yield different weights
 
-![Untitled](Machine%20Le%206bb85/Untitled%2079.png)
+![Untitled](MachineLearning/Untitled%2079.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2080.png)
+![Untitled](MachineLearning/Untitled%2080.png)
 
 Multilayer Perceptron：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2081.png)
+![Untitled](MachineLearning/Untitled%2081.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2082.png)
+![Untitled](MachineLearning/Untitled%2082.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2083.png)
+![Untitled](MachineLearning/Untitled%2083.png)
 
 Relu：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2084.png)
+![Untitled](MachineLearning/Untitled%2084.png)
 
 Backpropagation：calculate the gradient of each node from last to first layer
 
@@ -499,9 +499,9 @@ Backpropagation：calculate the gradient of each node from last to first layer
 
 **Stochastic Gradient Descent (SGD)**：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2085.png)
+![Untitled](MachineLearning/Untitled%2085.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2086.png)
+![Untitled](MachineLearning/Untitled%2086.png)
 
 **Ealry stoppping**：Training can be stopped when the validation loss is stable for a number of iterations. stable means change below a threshold. this is to prevent overfitting the training data.
 
@@ -517,7 +517,7 @@ A multi-layer perceptron with a single hidden layer and a finite number of nodes
 
 can approximate any continuous function up to a desired error.
 
-![Untitled](Machine%20Le%206bb85/Untitled%2087.png)
+![Untitled](MachineLearning/Untitled%2087.png)
 
 Deep learning corollary（深层网络相比一层）:
 
@@ -531,7 +531,7 @@ Given the same number of nodes, a deep network can learn more complex functions.
 
 **network is still sensitive to initialization对初始权重敏感：train several networks and combine them as an ensemble.**
 
-![Untitled](Machine%20Le%206bb85/Untitled%2088.png)
+![Untitled](MachineLearning/Untitled%2088.png)
 
 Locality : at low-level, features from 1 region are independent (do not depend on)
 
@@ -539,15 +539,15 @@ features from a far-away region.
 
 Translation: the same features can appear anywhere in the signal
 
-![Untitled](Machine%20Le%206bb85/Untitled%2089.png)
+![Untitled](MachineLearning/Untitled%2089.png)
 
 **MLP ignores the spatial relationship between pixels**
 
 Convolution卷积：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2090.png)
+![Untitled](MachineLearning/Untitled%2090.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2091.png)
+![Untitled](MachineLearning/Untitled%2091.png)
 
 （1）原始图像通过与卷积核的数学运算，可以提取出图像的某些指定特征（features)。
 
@@ -561,13 +561,13 @@ cnn的两种解释：
 
 convolution in the time domain is equivalent to multiplication in the frequency domain
 
-![Untitled](Machine%20Le%206bb85/Untitled%2092.png)
+![Untitled](MachineLearning/Untitled%2092.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2093.png)
+![Untitled](MachineLearning/Untitled%2093.png)
 
 2.从模式匹配角度（学习特征模式如车、人脸）
 
-![Untitled](Machine%20Le%206bb85/Untitled%2094.png)
+![Untitled](MachineLearning/Untitled%2094.png)
 
 卷积对边缘数据如何进行填充padding：
 
@@ -575,7 +575,7 @@ convolution in the time domain is equivalent to multiplication in the frequency 
 
 输出相比输入：valid变小，sam不变，full会增大
 
-![Untitled](Machine%20Le%206bb85/Untitled%2095.png)
+![Untitled](MachineLearning/Untitled%2095.png)
 
 "same" is better since it looks at structures around border
 
@@ -592,17 +592,17 @@ sub-sampling（to reduce the feature map size）的两种方法：
 1. local translation invariance(不变性)，这种不变性包括translation(平移)，rotation(旋转)，scale
 2. 保留主要的特征同时减少参数(降维，效果类似PCA)和计算量，防止过拟合，提高模型泛化能力(robust)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2096.png)
+![Untitled](MachineLearning/Untitled%2096.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2097.png)
+![Untitled](MachineLearning/Untitled%2097.png)
 
 Receptive field ：what pixels in the input affect a particular node. larger receptive fields can see larger patterns.
 
 Receptive field size ：
 
-![Untitled](Machine%20Le%206bb85/Untitled%2098.png)
+![Untitled](MachineLearning/Untitled%2098.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%2099.png)
+![Untitled](MachineLearning/Untitled%2099.png)
 
 防止过拟合：
 
@@ -618,13 +618,13 @@ Data augmentation数据增强：artificially permute the data to increase the da
 
 至少需要多少样本：
 
-![Untitled](Machine%20Le%206bb85/Untitled%20100.png)
+![Untitled](MachineLearning/Untitled%20100.png)
 
 **RELU**：ReLU(z)=max(0,z)
 
-![Untitled](Machine%20Le%206bb85/Untitled%20101.png)
+![Untitled](MachineLearning/Untitled%20101.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%20102.png)
+![Untitled](MachineLearning/Untitled%20102.png)
 
 internal covariate shift ：change in the distribution of activations during training, due to
 
@@ -636,7 +636,7 @@ prevent gradient vanish and speed up the training for it can  use higher learnin
 
 alter the learning rate:
 
-![Untitled](Machine%20Le%206bb85/Untitled%20103.png)
+![Untitled](MachineLearning/Untitled%20103.png)
 
 Adaptive schedule: reduce the learning rate when the validation loss no longer improves
 
@@ -644,7 +644,7 @@ Fixed schedule: 自定义
 
 add a Momentum动量: The estimated gradient is noisy, can jump around. we keep a running average of the gradients across mini-batches.
 
-![Untitled](Machine%20Le%206bb85/Untitled%20104.png)
+![Untitled](MachineLearning/Untitled%20104.png)
 
 SGD smoothes the loss function. higher learning rate -> larger noise -> smoother loss. smoother loss removes the local minimum, making it easier to get near the global minimum.
 
@@ -654,21 +654,21 @@ ImageNet DataSet
 
 Auxiliary tasks: strengthen the supervisory signal to the early layers
 
-![Untitled](Machine%20Le%206bb85/Untitled%20105.png)
+![Untitled](MachineLearning/Untitled%20105.png)
 
 Multitask learning:
 
-![Untitled](Machine%20Le%206bb85/Untitled%20106.png)
+![Untitled](MachineLearning/Untitled%20106.png)
 
 残差学习Residual Learning：**equivalent to an ensemble**
 
-![Untitled](Machine%20Le%206bb85/Untitled%20107.png)
+![Untitled](MachineLearning/Untitled%20107.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%20108.png)
+![Untitled](MachineLearning/Untitled%20108.png)
 
 residual connection every two layers to solve the ***Degradation problem***
 
-![Untitled](Machine%20Le%206bb85/Untitled%20109.png)
+![Untitled](MachineLearning/Untitled%20109.png)
 
 Attention Mechanisms:ignore unimportant features (channels or spatial regions) in the feature map by using a (soft) mask. **SEnet**
 
@@ -678,15 +678,15 @@ so we can use Pre-trained mode as feature extractor without the last layer(再�
 
 Transfer learning and finetuning：pre-trained model + our network, only fine-tune our network.
 
-![Untitled](Machine%20Le%206bb85/Untitled%20110.png)
+![Untitled](MachineLearning/Untitled%20110.png)
 
 Autoencoder: 降维训练再升维回来
 
 Weight sharing is used to reduce the number of trainable parameters
 
-![Untitled](Machine%20Le%206bb85/Untitled%20111.png)
+![Untitled](MachineLearning/Untitled%20111.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%20112.png)
+![Untitled](MachineLearning/Untitled%20112.png)
 
 Denoising Autoencoder（DAE）：randomly corrupt the input (by setting values to 0), implemented by applying Dropout on the inputs.
 
@@ -694,41 +694,41 @@ learn about the data manifold and enables better latent representation
 
 两种解释：
 
-![Untitled](Machine%20Le%206bb85/Untitled%20113.png)
+![Untitled](MachineLearning/Untitled%20113.png)
 
 Convolutional AutoEncoder：use CNN,Decoder is the opposite architecture which replace maxpooling with upsampling
 
 Semantic Segmentation:
 
-![Untitled](Machine%20Le%206bb85/Untitled%20114.png)
+![Untitled](MachineLearning/Untitled%20114.png)
 
 U-net: Mix high-level and low-level features.
 
-![Untitled](Machine%20Le%206bb85/Untitled%20115.png)
+![Untitled](MachineLearning/Untitled%20115.png)
 
 Deep Generative Models:
 
-![Untitled](Machine%20Le%206bb85/Untitled%20116.png)
+![Untitled](MachineLearning/Untitled%20116.png)
 
 Reparameterization Trick
 
-![Untitled](Machine%20Le%206bb85/Untitled%20117.png)
+![Untitled](MachineLearning/Untitled%20117.png)
 
 Variational AutoEncoder (VAE)
 
-![Untitled](Machine%20Le%206bb85/Untitled%20118.png)
+![Untitled](MachineLearning/Untitled%20118.png)
 
 Generative Adversarial Networks (GAN)
 
-![Untitled](Machine%20Le%206bb85/Untitled%20119.png)
+![Untitled](MachineLearning/Untitled%20119.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%20120.png)
+![Untitled](MachineLearning/Untitled%20120.png)
 
-![Untitled](Machine%20Le%206bb85/Untitled%20121.png)
+![Untitled](MachineLearning/Untitled%20121.png)
 
 The VAE is trained to maximize the data marginal likelihood, while the GAN is trained to maximize confusion.
 
-![Untitled](Machine%20Le%206bb85/Untitled%20122.png)
+![Untitled](MachineLearning/Untitled%20122.png)
 
 project1思路：
 
@@ -772,13 +772,13 @@ ranger optimizer
 
 需要注意的是，与在每一层中添加更多的神经元相比，**添加层层数将获得更大的性能提升**。因此，**不要在一个隐藏层中加入过多的神经元**。
 
-![Untitled](Machine%20Le%206bb85/Untitled%20123.png)
+![Untitled](MachineLearning/Untitled%20123.png)
 
 还可引入early_stopping
 
 层数选取：**对于一般简单的数据集，一两层隐藏层通常就足够了。但对于涉及时间序列或计算机视觉的复杂数据集，则需要额外增加层数**
 
-![Untitled](Machine%20Le%206bb85/Untitled%20124.png)
+![Untitled](MachineLearning/Untitled%20124.png)
 
 - **隐藏层数=1**：可以拟合任何“包含从一个有限空间到另一个有限空间的连续映射”的函数
 - **隐藏层数=2**：搭配适当的激活函数可以表示任意精度的任意决策边界，并且可以拟合任何精度的任何平滑映射
@@ -802,4 +802,4 @@ dbi - 类内距离和/类间距离和  DB指数越小说明聚类效果越好
 
 轮廓系数：
 
-![Untitled](Machine%20Le%206bb85/Untitled%20125.png)
+![Untitled](MachineLearning/Untitled%20125.png)

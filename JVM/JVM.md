@@ -2,13 +2,13 @@
 
 字节码：
 
-![Untitled](JVM%2012d5d/Untitled.png)
+![Untitled](JVM/Untitled.png)
 
 class文件本质是一个8位字节为基础单位的二进制流，
 
-![Untitled](JVM%2012d5d/Untitled%201.png)
+![Untitled](JVM/Untitled%201.png)
 
-![Untitled](JVM%2012d5d/Untitled%202.png)
+![Untitled](JVM/Untitled%202.png)
 
 线程隔离的数据区不会有垃圾，也不会有垃圾回收。gc都是发生在方法区和堆
 
@@ -18,7 +18,7 @@ class文件本质是一个8位字节为基础单位的二进制流，
 
 可以通过-Xss设置线程的最大栈空间
 
-![Untitled](JVM%2012d5d/Untitled%203.png)
+![Untitled](JVM/Untitled%203.png)
 
 （1）局部变量表：存储方法参数和在方法内部定义的局部变量，包括基本数据类型、对象引用。由于栈是线程私有的，所以这里不存在数据安全问题。
 
@@ -30,7 +30,7 @@ class文件本质是一个8位字节为基础单位的二进制流，
 
 Class 文件的编译过程中不包括传统编译器中的连接步骤，一切方法调用在 Class文件里面存储的都是**符号引用**，而不是方法在实际运行时内存布局中的入口地址（**直接引用**）。也就是需要在类加载阶段，甚至到运行期才能确定目标方法的直接引用。
 
-![Untitled](JVM%2012d5d/Untitled%204.png)
+![Untitled](JVM/Untitled%204.png)
 
 （4）方法返回地址：上一个栈方法的地址
 
@@ -38,7 +38,7 @@ Class 文件的编译过程中不包括传统编译器中的连接步骤，一�
 
 **程序计数器**：每个线程都有一个私有的指针，即程序计数器，指向方法区中的方法字节码（所属线程下一个要执行的指令的地址），是一个非常小的内存空间，但是也单独划了一片区域。
 
-![Untitled](JVM%2012d5d/Untitled%205.png)
+![Untitled](JVM/Untitled%205.png)
 
 如果当前线程正在执行的是 Java 方法，程序计数器记录的是 JVM 字节码指令地址，如果是执行 native 方法，则是未指定值（undefined）
 
@@ -54,7 +54,7 @@ Class 文件的编译过程中不包括传统编译器中的连接步骤，一�
 
 **元空间**（1.8之前叫永久代）：虚拟机规范中方法区的实现，虽然叫非堆但是在1.8之前实际也是用的堆内存，1.8改为直接使用物理内存而不是JVM的内存。和方法区对应，具体看后面。
 
-![Untitled](JVM%2012d5d/Untitled%206.png)
+![Untitled](JVM/Untitled%206.png)
 
 新生代和老年代的比例默认是1:2， 可以进行配置： -XX:Newratio 3 表示设置老年代是新生代的3倍
 
@@ -68,7 +68,7 @@ XX:MaxTenuringThreshold：默认为15，新生代对象活过gc的相应次数�
 
 老年代的major GC 不是 full GC
 
-![Untitled](JVM%2012d5d/Untitled%207.png)
+![Untitled](JVM/Untitled%207.png)
 
 逃逸分析技术：**Java 虚拟机中比较前沿的优化技术。这是一种可以有效减少 Java 程序中同步负载和内存堆分配压力的跨函数全局数据流分析算法**。通过逃逸分析，Java Hotspot 编译器能够分析出一个新的对象的引用的使用范围从而决定是否要将这个对象分配到堆上。
 
@@ -103,19 +103,19 @@ JIT 编译器可以借助逃逸分析来判断同步块所使用的锁对象是�
 
 为什么删除永久代？为永久代设置空间大小是很难确定的。如果动态加载类过多，容易产生 Perm 区的 OOM。对永久代进行调优较困难
 
-![Untitled](JVM%2012d5d/Untitled%208.png)
+![Untitled](JVM/Untitled%208.png)
 
-![Untitled](JVM%2012d5d/Untitled%209.png)
+![Untitled](JVM/Untitled%209.png)
 
-![Untitled](JVM%2012d5d/Untitled%2010.png)
+![Untitled](JVM/Untitled%2010.png)
 
 classLoader和EE的具体构造
 
-![Untitled](JVM%2012d5d/Untitled%2011.png)
+![Untitled](JVM/Untitled%2011.png)
 
-![Untitled](JVM%2012d5d/Untitled%2012.png)
+![Untitled](JVM/Untitled%2012.png)
 
-![Untitled](JVM%2012d5d/Untitled%2013.png)
+![Untitled](JVM/Untitled%2013.png)
 
 创建一个对象（类实例）的过程：
 
@@ -123,9 +123,9 @@ classLoader和EE的具体构造
 
 2.分配内存：为新生对象在堆上分配内存，分配方式有指针碰撞和空闲列表，选择哪种分配方法取决于堆空间是否连续决定，堆空间是否连续又有采用的垃圾收集器是否带有压缩整理功能决定。
 
-![Untitled](JVM%2012d5d/Untitled%2014.png)
+![Untitled](JVM/Untitled%2014.png)
 
-![Untitled](JVM%2012d5d/Untitled%2015.png)
+![Untitled](JVM/Untitled%2015.png)
 
 3.初始化零值****：****内存分配完成后，虚拟机需要将分配到的内存空间都初始化为零值（不包括对象头），这一步操作保证了对象的实例字段在 Java 代码中可以不赋初始值就直接使用，程序能访问到这些字段的数据类型所对应的零值。
 
@@ -139,7 +139,7 @@ classLoader和EE的具体构造
 
 加载：加载是类加载过程的第一个阶段，在加载阶段 虚拟机需要完成以下三件事情:通过一个类的全限定名来获取其定义的二进制字节流。将这个字节流所代表的静态存储结构转化为**方法区的运行时数据结构（运行时常量池）**。在**Java堆中生成一个代表这个类的java.lang.Class对象**，作为对方法区中这些数据的访问入口。
 
-![Untitled](JVM%2012d5d/Untitled%2016.png)
+![Untitled](JVM/Untitled%2016.png)
 
 验证：确保被加载的类的正确性，验证文件格式（如字节流是否以cafebabe开头），元数据验证，字节码验证。（不是必须，可以通过-Xveriifnone来关闭）
 
@@ -163,7 +163,7 @@ jdk 自带的 BootstrapClassLoader, ExtClassLoader, AppClassLoader 负责加载 
 
 3、通过ClassLoader.loadClass()方法动态加载
 
-![Untitled](JVM%2012d5d/Untitled%2017.png)
+![Untitled](JVM/Untitled%2017.png)
 
 类加载器的级别：
 
@@ -194,7 +194,7 @@ JVM类加载的特点：
 - 系统类防止内存中出现多份同样的字节码
 - 保证Java程序安全稳定运行，避免类的重复加载，保证了 Java 的核心 API 不被篡改
 
-![Untitled](JVM%2012d5d/Untitled%2018.png)
+![Untitled](JVM/Untitled%2018.png)
 
 JVM的沙箱保护机制：
 
@@ -239,7 +239,7 @@ GC Roots 一般包含以下内容:
 - 方法区中的常量引用的对象
 - 所有被同步锁持有的对象
 
-![Untitled](JVM%2012d5d/Untitled%2019.png)
+![Untitled](JVM/Untitled%2019.png)
 
 即使在可达性分析中不可达的对象，也不是马上被回收的，真正宣告一个对象死亡，至少要经历两次标记过程；可达性分析法中不可达的对象被第一次标记并且进行一次筛选，筛选的条件是此对象是否有必要执行 `finalize` 方法。当对象没有覆盖 `finalize` 方法，或 `finalize` 方法已经被虚拟机调用过时，虚拟机将这两种情况视为没有必要执行。被判定为需要执行的对象将会被放在一个队列中进行第二次标记，除非这个对象与引用链上的任何一个对象建立关联，否则就会被真的回收。（Object 类中的 finalize 方法一直被认为是一个糟糕的设计，成为了 Java 语言的负担，影响了 Java 语言的安全和 GC 的性能。JDK9 版本及后续版本中各个类中的 finalize 方法会被逐渐弃用移除）
 
@@ -288,11 +288,11 @@ finalize()函数：finalize() 类似 C++ 的析构函数，用来做关闭外部
 - 标记和清除过程效率都不高；清除算法中分块不是连续的，因此每次分配都必须遍历空闲链表，找到足够 大的分块。最糟的情况就是每次进行分配都得把空闲链表遍历到最后。
 - 会产生大量不连续的内存碎片，导致无法给大对象分配内存。不能充分利用堆空间
 
-![Untitled](JVM%2012d5d/Untitled%2020.png)
+![Untitled](JVM/Untitled%2020.png)
 
 标记压缩（整理）：让所有存活的对象都向一端移动，然后直接清理掉端边界以外的内存。有效利用堆空间。但是要搜索三次堆，花费的时间多
 
-![Untitled](JVM%2012d5d/Untitled%2021.png)
+![Untitled](JVM/Untitled%2021.png)
 
 **引用计数法** ：计数引用数，为0的可回收 有点像LRU 比较原始，用的少。
 
@@ -302,7 +302,7 @@ finalize()函数：finalize() 类似 C++ 的析构函数，用来做关闭外部
 
 HOTSPOT的JVM实现还引入了Eden区作为对复制算法的优化，它可以看做是from和to区域的缓冲和共享区域，这样一定程度上缓解了复制算法只有50%堆利用率的问题。一次可以使用90%的空间(8:1:1)
 
-![Untitled](JVM%2012d5d/Untitled%2022.png)
+![Untitled](JVM/Untitled%2022.png)
 
 **分代收集算法**：根据不同区域使用不同的收集算法
 
@@ -311,7 +311,7 @@ HOTSPOT的JVM实现还引入了Eden区作为对复制算法的优化，它可以
 
 **垃圾收集器**：除了 CMS 和 G1 之外，其它垃圾收集器都是以串行的方式执行
 
-![Untitled](JVM%2012d5d/Untitled%2023.png)
+![Untitled](JVM/Untitled%2023.png)
 
 **Serial收集器**：单线程，串行，没有多线程切换的开销，简单高效，适合Client 模式的虚拟机
 

@@ -2,7 +2,7 @@
 
 `高性能MySQL`
 
-![Untitled](%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled.png)
+![Untitled](数据库mysql/Untitled.png)
 
 超键、候选键、主键：
 
@@ -128,9 +128,9 @@ Read View在事务执行快照读的那一刻，会生成数据库系统当前�
 
 Read view 过程：
 
-![Untitled](%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%201.png)
+![Untitled](数据库mysql/Untitled%201.png)
 
-![Untitled](%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%202.png)
+![Untitled](数据库mysql/Untitled%202.png)
 
 InnoDB在可重复读模式下不能避免幻读，但是加上Next-Key Locks锁机制后可以避免幻读（锁定一个范围，并且锁定记录本身-当执行当前读时，会锁定读取到的记录的同时，锁定它们的间隙，防止其它事务在查询范围内插入数据）
 
@@ -167,7 +167,7 @@ b树减少了查询次数（IO次数），B+树在B树上进一步进行了优�
 
 也可以用create index indexName on table_name(column_name)
 
-![Untitled](%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%203.png)
+![Untitled](数据库mysql/Untitled%203.png)
 
 INNODB聚簇索引 MYISAM非聚簇索引对比：
 
@@ -175,7 +175,7 @@ INNODB聚簇索引 MYISAM非聚簇索引对比：
 
 对于**聚簇索引**来说，表数据是和主键一起存储的，主键索引的叶结点存储**行数据**(包含了主键值)，二级索引的叶结点存储行的主键值（需要回表）。使用的是B+树作为索引的存储结构，非叶子节点都是索引关键字，但非叶子节点中的关键字中不存储对应记录的具体内容或内容地址。叶子节点上的数据是主键与具体记录(数据内容)。
 
-![%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%204.png](%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%204.png)
+![数据库mysql/Untitled%204.png](数据库mysql/Untitled%204.png)
 
 聚簇索引优劣：
 
@@ -224,11 +224,11 @@ B+ Tree索引缺点
 
 b+树索引  b树索引  哈希索引对比：
 
-![%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%205.png](%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%205.png)
+![数据库mysql/Untitled%205.png](数据库mysql/Untitled%205.png)
 
-![%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%206.png](%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%206.png)
+![数据库mysql/Untitled%206.png](数据库mysql/Untitled%206.png)
 
-![%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%207.png](%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%207.png)
+![数据库mysql/Untitled%207.png](数据库mysql/Untitled%207.png)
 
 还有全文索引（倒排索引）和空间索引（Geo）
 
@@ -246,11 +246,11 @@ Explain的重要参数：
 
 - select_type : 查询类型，有简单查询、联合查询、子查询等
 
-![Untitled](%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%208.png)
+![Untitled](数据库mysql/Untitled%208.png)
 
 - type：如何进行扫描 all表示全表 index表示全索引 rang表示索引范围扫毛
 
-![Untitled](%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%209.png)
+![Untitled](数据库mysql/Untitled%209.png)
 
 - key : 使用的索引
 - rows : 扫描的行数
@@ -333,7 +333,7 @@ select * from t_user where intPhone = ”1300000001”
 
 [https://www.cnblogs.com/xiaolincoding/p/15769721.html](https://www.cnblogs.com/xiaolincoding/p/15769721.html)
 
-![Untitled](%E6%95%B0%E6%8D%AE%E5%BA%93mysql%20f33be/Untitled%2010.png)
+![Untitled](数据库mysql/Untitled%2010.png)
 
 select count(name) from t_order;表示t_order 表中，name 字段不为 NULL 的记录数量
 
