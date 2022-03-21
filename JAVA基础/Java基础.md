@@ -8,7 +8,7 @@ JDK：包括JRE，还包括编译器javac 和一些其他工具 jdb、javadoc，
 
 字节码：.class文件
 
-![Untitled](Java/Untitled.png)
+![Untitled](Java基础/Untitled.png)
 
 JVM的解释器逐行解释执行字节码（一句一句解释），后来又引入JIT运行时编译器（一次性编译完成），第一次编译完成后会把对应的机器码保存下来，对于热点代码进行编译，其他代码解释
 
@@ -28,7 +28,7 @@ java和c++的异同：
 
 可变参数...：(String... s) 实际被读入为一个数组 String[] s1 = s; 是一种语法糖
 
-![Untitled](Java/Untitled%201.png)
+![Untitled](Java基础/Untitled%201.png)
 
 重载和重写：
 
@@ -44,7 +44,7 @@ java和c++的异同：
 
 匿名内部类也就是没有名字的内部类正因为没有名字，所以匿名内部类只能使用一次，通常用来简化代码编写
 
-![Untitled](Java/Untitled%202.png)
+![Untitled](Java基础/Untitled%202.png)
 
 如果类没有重写equals方法，则等价于用”==”来比较类的对象。
 
@@ -75,27 +75,27 @@ Hashcode()默认是返回类内存地址的哈希值，equals()默认是比较�
 
 POJO类的成员变量建议用包装类型，而局部变量推荐用基本数据类型（没有NPE问题，在虚拟机栈上速度快）
 
-![Untitled](Java/Untitled%203.png)
+![Untitled](Java基础/Untitled%203.png)
 
 数值类型的包装类型基本都有常量池: Integer Long[-128,127] Character[0,127]
 
-![Untitled](Java/Untitled%204.png)
+![Untitled](Java基础/Untitled%204.png)
 
 基本类型可以用==比较，但是包装类型一定要用equals比较，哪怕有常量池
 
-![Untitled](Java/Untitled%205.png)
+![Untitled](Java基础/Untitled%205.png)
 
 基本类型的运算会会发生小字节类型向大字节类型转换的现象。对于short，byte,char 比int 字节数小的变量类型来说，运算结果会自动转换为int类型。Java编译器会在编译期或者运行期将byte和short类型的数据带符号扩展为相应的int类型数据，将boolean和char类型数据零位扩展为相应的int类型数据。因此，在处理boolean 、byte、short 和 char 类型的数组是，也会用相应的int类型的字节码指令来处理。因此，大多数对于上述类型数据的操作，实际上都是使用相应的 int 类型作为运算类型
 
-![Untitled](Java/Untitled%206.png)
+![Untitled](Java基础/Untitled%206.png)
 
 a+=b和a=a+b的区别：
 
-![Untitled](Java/Untitled%207.png)
+![Untitled](Java基础/Untitled%207.png)
 
 还有一个区别是+=会进行隐式类型转换，而a+b不会，所以对于short byte char这种进行运算时会转换为int运算的，a=a+b会报错，因为没法把int转为这些类型
 
-![Untitled](Java/Untitled%208.png)
+![Untitled](Java基础/Untitled%208.png)
 
 double float浮点数为什么不准确，bigdecimal怎么解决的：
 
@@ -123,13 +123,13 @@ final:类不能被继承，方法不能被子类重写，基本类型不能变�
 
 多态：表示一个对象具有多种的状态，具体表现为父类的引用指向子类的实例
 
-![Untitled](Java/Untitled%209.png)
+![Untitled](Java基础/Untitled%209.png)
 
 **深拷贝和浅拷贝及引用拷贝**：
 
-![Untitled](Java/Untitled%2010.png)
+![Untitled](Java基础/Untitled%2010.png)
 
-![Untitled](Java/Untitled%2011.png)
+![Untitled](Java基础/Untitled%2011.png)
 
 **实现深拷贝的方法**：
 
@@ -141,9 +141,9 @@ final:类不能被继承，方法不能被子类重写，基本类型不能变�
 
 String为什么不能修改：虽然final修饰了 byte[]数组（final修饰的基本类型不能改变，修饰的引用类型不能再指向其他对象），但这个不是string不能修改的原因（引用还是可以变的)，原因是数组是private的且没有提供修改方法，而String类被final修饰不能被继承，所以不会有子类破坏String不可变性
 
-![Untitled](Java/Untitled%2012.png)
+![Untitled](Java基础/Untitled%2012.png)
 
-![Untitled](Java/Untitled%2013.png)
+![Untitled](Java基础/Untitled%2013.png)
 
 1. 操作少量的数据: 适用 `String`
 2. 单线程操作字符串缓冲区下操作大量数据: 适用 `StringBuilder`
@@ -151,13 +151,13 @@ String为什么不能修改：虽然final修饰了 byte[]数组（final修饰的
 
 Java中只有值传递没有引用传递的原因：
 
-![Untitled](Java/Untitled%2014.png)
+![Untitled](Java基础/Untitled%2014.png)
 
 匿名内部类 lambda
 
 枚举：本质是创建一个final类继承Enum类
 
-![Untitled](Java/Untitled%2015.png)
+![Untitled](Java基础/Untitled%2015.png)
 
 ```java
 public enum Fruit{
@@ -241,7 +241,7 @@ extends X的集合是不能调用add的，只能在初始化时赋一个X的子�
 
 super X的集合可以add X或X的子类，不能add X的父类（因为不知道具体是X的哪个父类，所以不允许加入X的超类），读取的时候因为此时不知道是什么类型，所以只能返回object，因此super可以写不能读。类型擦除后擦除到Object
 
-![Untitled](Java/Untitled%2016.png)
+![Untitled](Java基础/Untitled%2016.png)
 
 h[ttps://blog.csdn.net/w372426096/article/details/78081552](https://blog.csdn.net/w372426096/article/details/78081552)
 
@@ -249,7 +249,7 @@ h[ttps://blog.csdn.net/w372426096/article/details/78081552](https://blog.csdn.ne
 
 因为是语法糖，所以运行期间可以通过反射添加非泛型类元素
 
-![Untitled](Java/Untitled%2017.png)
+![Untitled](Java基础/Untitled%2017.png)
 
 项目哪里用到了泛型？todo
 
@@ -259,7 +259,7 @@ class field method（每种都有getannotation方法获取注解）
 
 类设置accessable为true可以访问和修改私有变量、方法
 
-![Untitled](Java/Untitled%2018.png)
+![Untitled](Java基础/Untitled%2018.png)
 
 *getDeclaredMethod()*获取的是**类自身**声明的所有方法，包含**public**、**protected**和**private**方法。*getMethod()*获取的是类的所有共有方法，这就包括自身的**所有public**方法，和从基类继承的、从接口实现的所有public方法。
 
@@ -267,7 +267,7 @@ class field method（每种都有getannotation方法获取注解）
 
 总结：invoke→reflectionFactory→delegatingMethodAccessorImpl→nativeMethodAccessorImpl→ 调用超过一定次数则MthodAccessorImpl
 
-![Untitled](Java/Untitled%2019.png)
+![Untitled](Java基础/Untitled%2019.png)
 
 **静态代理和动态代理**：
 
@@ -277,7 +277,7 @@ class field method（每种都有getannotation方法获取注解）
 
 静态代理就是代理模式，为其他对象提供一种代理以控制对这个对象的访问
 
-![Untitled](Java/Untitled%2020.png)
+![Untitled](Java基础/Untitled%2020.png)
 
 静态代理模式固然在访问无法访问的资源，增强现有的接口业务功能方面有很大的优点，但是大量使用这种静态代理，会使我们系统内的类的规模增大，并且不易维护；并且由于 Proxy 和 RealSubject 的功能本质上是相同的，Proxy 只是起到了中介的作用，这种代理在系统中的存在，导致系统结构比较臃肿和松散。
 
@@ -285,7 +285,7 @@ class field method（每种都有getannotation方法获取注解）
 
 **动态代理**：核心-InvocationHandler和Proxy。invocationhandler这个接口只有一个invoke方法，它的实现充当一个代理类的作用，InvocationhandlerImpl包含一个被代理的类，使用invoke方法来进行方法调用（这里其实也有AOP的影子，通过InvocationHandler的invoke来在调用方法的前后进行切面操作）
 
-![Untitled](Java/Untitled%2021.png)
+![Untitled](Java基础/Untitled%2021.png)
 
 我们创建InvocationhandlerImpl后，使用这个impl作为参数，调用Proxy的newProxyInstance静态方法来产生一个动态代理类，这个类继承了proxy并且实现了被代理的接口（jdk的动态代理只能代理接口，即实现了某个接口的类，对于没有实现任何接口的类，需要使用cglib的动态代理技术,**cglib基于让newProxy去继承RealSubject**）
 
@@ -335,7 +335,7 @@ static {try{
         }
 ```
 
-![Untitled](Java/Untitled%2022.png)
+![Untitled](Java基础/Untitled%2022.png)
 
 JDK动态代理只提供接口的代理，不支持类的代理，因为生成的动态类需要继承proxy，不能多重继承，**只能实现类实现的接口所提供的的方法（类实现接口后自己添加的方法除了hashCode，equals 和 toString其他的方法都不能被代理类生成）**
 
@@ -378,14 +378,14 @@ class AnnotationInvocationHandler implements InvocationHandler, Serializable {
 
 数组本质是类，是虚拟机运行时自动创建的类型，这个类的命名以“[”开头，几个表示几维，接着是数组中元素的类型，比如String[]  getclass().getname()是[Ljava.lang.String。（[https://blog.csdn.net/zhangjg_blog/article/details/16116613#t1](https://blog.csdn.net/zhangjg_blog/article/details/16116613#t1)）
 
-![Untitled](Java/Untitled%2023.png)
+![Untitled](Java基础/Untitled%2023.png)
 
 **异常**：所有的异常都有一个共同的祖先 `java.lang` 包中的 `Throwable` 类。`Throwable` 类有两个重要的子类:
 
 - **`Exception`** :程序本身可以处理的异常，可以通过 `catch` 来进行捕获。`Exception` 又可以分为 Checked Exception (受检查异常，必须处理) 和 Unchecked Exception (不受检查异常，可以不处理)。
 - **`Error`** ：`Error` 属于程序无法处理的错误 ，我们没办法通过 `catch` 来进行捕获 。例如Java 虚拟机运行错误（`Virtual MachineError`）、虚拟机内存不够错误(`OutOfMemoryError`)、类定义错误（`NoClassDefFoundError`）等 。这些异常发生时，Java 虚拟机（JVM）一般会选择线程终止。
 
-![Untitled](Java/Untitled%2024.png)
+![Untitled](Java基础/Untitled%2024.png)
 
 Checked Exception在编译过程中必须被 `catch`/`throw` 处理
 
@@ -411,11 +411,11 @@ StackOverFlow异常一般是虚拟机栈的嵌套层数太深，所有栈帧的�
 
 **如果频繁FULL GC，那很可能就是代码没写好，导致内存泄漏了**，可以把堆dump下来或者用在线分析工具查看存活的对象情况及占用内存从而分析问题，有些分析工具还可以定位到代码（jstate jconsole）
 
-![Untitled](Java/Untitled%2025.png)
+![Untitled](Java基础/Untitled%2025.png)
 
 **Try-with-resources**： 任何实现 `java.lang.AutoCloseable`或者 `java.io.Closeable`的对象都可以被称为资源，对于资源的使用，用Try-with-resources 替代 Try-catch-finally，可以自动close，并且可以很简单的处理多个资源的开关
 
-![Untitled](Java/Untitled%2026.png)
+![Untitled](Java基础/Untitled%2026.png)
 
 处理异常：
 
@@ -439,9 +439,9 @@ VM 会顺着调用栈去查找看是否有可以处理异常的代码，如果�
 
 被反序列化时会先去JVM找有没有这个类的class文件，有的话输出这个类文件的静态变量值, JVM没有加载这个类的话就会为默认值
 
-![Untitled](Java/Untitled%2027.png)
+![Untitled](Java基础/Untitled%2027.png)
 
-![Untitled](Java/Untitled%2028.png)
+![Untitled](Java基础/Untitled%2028.png)
 
 ****有了字节流,为什么还要有字符流：****
 
@@ -477,19 +477,19 @@ FileChannel、DatagramChannel、SocketChannel、SocketServerChannel
 
 **Selector**：
 
-![Untitled](Java/Untitled%2029.png)
+![Untitled](Java基础/Untitled%2029.png)
 
 每个通道都需要注册到Selector上，注册时必须指定监听的具体事件（可以单个可以多个，不同位 或一下就可以）
 
-![Untitled](Java/Untitled%2030.png)
+![Untitled](Java基础/Untitled%2030.png)
 
 Selector会轮询的去询问注册通道是否有指定事件到达，当使用者调用Selector.select()时会返回到达通道的数量，若都没有事件到达，则会阻塞到至少有一个事件到达或者到timeout（select函数是阻塞的）。看源码发现select的doselect有两个实现，一个是WEpoll 一个是windowSelector
 
  使用`selectedKeys`来获取到达的事件及对应通道
 
-![Untitled](Java/Untitled%2031.png)
+![Untitled](Java基础/Untitled%2031.png)
 
-![Untitled](Java/Untitled%2032.png)
+![Untitled](Java基础/Untitled%2032.png)
 
 NIO的一个缺点是只能用单线程调用select来处理IO
 
@@ -540,9 +540,9 @@ sendfile适合大文件，mmap适合小数据
 
 **集合/容器**：
 
-![Untitled](Java/Untitled%2033.png)
+![Untitled](Java基础/Untitled%2033.png)
 
-![Untitled](Java/Untitled%2034.png)
+![Untitled](Java基础/Untitled%2034.png)
 
 ArrayDeque双端队列的底层是数组+双指针实现循环队列（相比于linkedList有扩容问题，但是linkedList插入的是node，伴随着对象的创建，使得插入操作速度较慢，占用空间大以）
 
@@ -560,9 +560,9 @@ LinkedList适合频繁的两端增删，也是线程不安全的
 
 Iterator 接口提供遍历任何 Collection 的接口。我们可以从一个 Collection 中使用迭代器方法来获取迭代器实例。
 
-![Untitled](Java/Untitled%2035.png)
+![Untitled](Java基础/Untitled%2035.png)
 
-![Untitled](Java/Untitled%2036.png)
+![Untitled](Java基础/Untitled%2036.png)
 
 **List如何正确遍历删除**：
 
@@ -574,16 +574,16 @@ Iterator 接口提供遍历任何 Collection 的接口。我们可以从一个 C
 
 正确操作：1. iterator.remove()会把两个值重新赋值
 
-![Untitled](Java/Untitled%2037.png)
+![Untitled](Java基础/Untitled%2037.png)
 
 1. for循环+list.get(i)正序删除，删除后将i=i-1
 2. for循环+list.get(i)倒序删除
 
  4.  java8之后新特性:removeIf()
 
-![Untitled](Java/Untitled%2038.png)
+![Untitled](Java基础/Untitled%2038.png)
 
-![Untitled](Java/Untitled%2039.png)
+![Untitled](Java基础/Untitled%2039.png)
 
 因为Arrays.asList返回的是java.util.Arrays的一个内部类，没有实现集合的修改方法
 
@@ -607,21 +607,21 @@ size和capacity：一个是当前元素个数，一个是当前数组长度
 
 在arraylist的add(index,object)中，要把index之后的元素都往后挪，就是使用这个native方法实现数组自己的移位复制
 
-![Untitled](Java/Untitled%2040.png)
+![Untitled](Java基础/Untitled%2040.png)
 
 **Arrays.Copyof**： 调用的就是System.ArrayCopy
 
 创建一个新的数组，将原数组复制到新数组
 
-![Untitled](Java/Untitled%2041.png)
+![Untitled](Java基础/Untitled%2041.png)
 
  ArrayList自我扩容调用的就是Arrays.copyof函数
 
-![Untitled](Java/Untitled%2042.png)
+![Untitled](Java基础/Untitled%2042.png)
 
 ArrayDeque和LinkedList：arraydeque也是线程不安全
 
-![Untitled](Java/Untitled%2043.png)
+![Untitled](Java基础/Untitled%2043.png)
 
 队列如果想要线程安全可以用BlockingQueue和ConcurrentLinkedQueue（非阻塞）
 
@@ -643,7 +643,7 @@ Hashtable是线程安全（synchronized）但这个类已经被淘汰了：get/p
 
 `HashMap` 可以存储 null 的 key 和 value
 
-![Untitled](Java/Untitled%2044.png)
+![Untitled](Java基础/Untitled%2044.png)
 
 **哈希值要进行哈希扰动的原因**？
 
@@ -658,11 +658,11 @@ return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
 
 **Jdk8哈希扩容的优化**？
 
-![Untitled](Java/Untitled%2045.png)
+![Untitled](Java基础/Untitled%2045.png)
 
 在扩充HashMap的时候，不需要像JDK1.7的实现那样重新计算hash，只需要看看原来的hash值新增的那个bit是1还是0就好了，是0的话索引没变，是1的话索引变成“原索引+oldCap”
 
-![Untitled](Java/Untitled%2046.png)
+![Untitled](Java基础/Untitled%2046.png)
 
 **哈希表为什么链表长了要用红黑树而不是二叉平衡树**？
 
@@ -694,13 +694,13 @@ ConcurrentHashMap 中 synchronized 只锁定当前链表或红黑二叉树的首
 
 `**ConcurrentHashMap` 的并发扩容**：hashmap扩容是阻塞的（非concurrent的容器扩容都是阻塞）`ConcurrentHashMap` 支持并发扩容。`**ConcurrentHashMap` 扩容也是不用重新哈希的，根据高位决定新位置**
 
-![Untitled](Java/Untitled%2047.png)
+![Untitled](Java基础/Untitled%2047.png)
 
 核心方法是transfer，从数组队尾开始拷贝，拷贝槽点时会锁住槽点，拷贝完成后将槽点设置为转移节点（ForwardingNode）。所以槽点拷贝完成后将新数组赋值给容器。线程分段进行数据在新老数组中的迁移，扩容过程中发生的插入，只要插入的位置扩容线程还未迁移到，就可以插入，**当迁移到该插入的位置时**，就会阻塞等待插入操作完成再继续迁移。
 
-![Untitled](Java/Untitled%2048.png)
+![Untitled](Java基础/Untitled%2048.png)
 
-![Untitled](Java/Untitled%2049.png)
+![Untitled](Java基础/Untitled%2049.png)
 
 [**ConcurrentHashMap](https://so.csdn.net/so/search?q=ConcurrentHashMap&spm=1001.2101.3001.7020)的键值对为什么不能为null，而HashMap却可以？**
 
@@ -711,21 +711,21 @@ ConcurrentHashMap 中 synchronized 只锁定当前链表或红黑二叉树的首
 
 **HashMap是非并发的，可以通过contains(key)的true或者false来做这个判断。而支持并发的Map在先调用m.get(key)再m.contains(key)的时候，m可能已经不同了。**
 
-![Untitled](Java/Untitled%2050.png)
+![Untitled](Java基础/Untitled%2050.png)
 
 HashMap：
 
 初始大小16，负载因子0.75
 
-![Untitled](Java/Untitled%2051.png)
+![Untitled](Java基础/Untitled%2051.png)
 
-![Untitled](Java/Untitled%2052.png)
+![Untitled](Java基础/Untitled%2052.png)
 
 hash扩容 resize在jdk8有优化（不需要重新计算哈希值，只需要判断每个元素新位是1还是0）
 
 LRU- LinkedHashMap.removeEldestEntry
 
-![Untitled](Java/Untitled%2053.png)
+![Untitled](Java基础/Untitled%2053.png)
 
 WaekhashMap：通过弱引用来管理entry entry 可能会被GC自动删除***WeakHashMap* 的这个特点特别适用于需要缓存的场景**。在缓存场景下，由于内存是有限的，不能缓存所有对象；对象缓存命中可以提高系统效率，但缓存MISS也不会造成错误，因为可以通过计算重新得到。
 
